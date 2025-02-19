@@ -11,6 +11,7 @@ import AuthPage from "./pages/landing/auth/AuthPage";
 const BlogPage = React.lazy(() => import('./pages/blog/BlogPage'));
 const BlogPostDetail = React.lazy(() => import('./pages/blog/components/BlogPostDetail'));
 const Dashboard = React.lazy(() => import('./pages/dashboard/Dashboard'));
+const Analytics = React.lazy(() => import('./pages/analytics/Analytics'));
 const LegalNotice = React.lazy(() => import('./pages/landing/legal/LegalNotice'));
 const PrivacyPolicy = React.lazy(() => import('./pages/landing/legal/PrivacyPolicy'));
 const CookiePolicy = React.lazy(() => import('./pages/landing/legal/CookiePolicy'));
@@ -56,6 +57,14 @@ export default function App() {
         <Route path='/auth' element={<AuthPage />} />
         <Route path='/blog' element={<BlogPage />} />
         <Route path='/blog/:id' element={<BlogPostDetail />} />
+        <Route
+          path='/analytics'
+          element={
+            <PrivateRoute>
+              <Analytics />
+            </PrivateRoute>
+          }
+        />
         <Route path='/legal' element={<LegalNotice />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path='/cookies' element={<CookiePolicy />} />
